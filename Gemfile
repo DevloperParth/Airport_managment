@@ -78,3 +78,5 @@ gem 'dotenv-rails'
 gem 'sassc-rails'
  gem 'bootstrap'
 
+
+gem 'byebug'
