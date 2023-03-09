@@ -4,4 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable
+
+  enum :role , {passenger:'passenger', admin:'admin'}, prefix: true 
+  #enum role: [:passenger, :admin]
 end
