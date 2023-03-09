@@ -10,12 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_01_122226) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_101537) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "flights", force: :cascade do |t|
+    t.string "flight_no"
+    t.string "flight_name"
+    t.string "source"
+    t.string "destination"
+    t.datetime "takeoff_time"
+    t.datetime "landing_time"
+    t.integer "price"
+    t.integer "total_seats"
+    t.integer "available_seats"
+    t.integer "occupied_seats"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pros", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.string "name"
+    t.integer "flight_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,6 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_122226) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.integer "mobile_no"
+    t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

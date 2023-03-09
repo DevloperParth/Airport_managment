@@ -1,0 +1,113 @@
+<h1>Hello, Rails!</h1>
+<% if current_user.role=="admin"%>
+  <% if user_signed_in?  %>
+     Logged in as <strong><%= current_user.email%></strong>.
+
+    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+
+   <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      height: 90px;
+      background-color: #131313;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 990px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #ffc993;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #131313;
+      color: white;
+      padding: 15px;
+      height: 90px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+  </head>
+  <body>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                       
+        </button>
+        <a class="navbar-brand" href="#"><h3>Account:Admin</h3></a>
+        <a class="navbar-brand" href="#"><h3>Change Password</h3></a>
+        <a class="navbar-brand" href="#"><h3>Logout</h3></a>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container-fluid text-center">    
+   <div class="row content">
+    <div class="col-sm-2 sidenav">
+     <ul class="nav navbar-nav">
+      
+      <h1>Airport Management System</h1>
+      <h2><li><a href="/users/all">All Users</a></li></h2>
+      <h2><li> <a href="/flights/all">All flights</a></li></h2> 
+      <h2><li> <a href="/flightroutes/index">All Routes</a></li></h2> 
+      <h2><li> <a href="/flightroutes/flightschedule">Scheduled Flights</a></li></h2> 
+      
+    
+      <%# <h2>  <li><a href="#">Reports</a></li></h2>
+      <h2><li><a href="#">Send Notifications</a></li></h2>
+      <h2>  <li><a href="#">Cancellations</a></li></h2>
+      <h2>  <li><a href="#">Refunds</a></li></h2> %>
+      </ul>
+    </div>
+    <div class="col-sm-8 text-left" style="background-image: url('https://infrastructure.aecom.com/hubfs/Social_The%20aviation%20industry%20and%20climate%20change_AdobeStock_112351350_edited.jpg');">   
+   </div>
+   </div>
+  </div>
+
+  <footer class="container-fluid text-center">
+  </footer>
+  </body>
+  
+  </html>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+  <% end %>
+
+<% else %>
+  <h1>Hello</h1>
+  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+<% end %>
+
+ 
+

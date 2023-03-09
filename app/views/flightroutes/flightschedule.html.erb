@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+  border-collapse:collapse;
+}
+body {background-color: #ffcc99;}
+</style>
+<body>
+
+<h2>Scheduled Flights </h2>
+
+<table style="width:100%">
+  <tr>
+     <th>Flight Id</th>
+       <th>Status</th>
+     <th>Route Name</th>
+  </tr>
+  
+      <% @routes.each do |route| %>
+         <% if route.flight_id != nil && route.name %>
+         <tr>
+          <td><%= route.flight_id  %></td>
+          <td><%= "is Scheduled on route"  %></td>
+          <td><%= route.name  %></td>
+         <% else %>
+         <td><%= route.flight_id  %></td>
+          <td><%= "Not Scheduled"%></td>
+         <% end %>
+         </tr>
+      <% end %>
+      
+</table>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+
+body {background-color: #ffcc99;}
+</style>
+<body>
+
+<h2>A basic HTML table</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+     <th>Mobile No</th>
+  </tr>
+  
+      <% @users.each do |user| %>
+      <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.mobile_no %></td>
+      </tr>
+      <% end %>
+      
+</table>
+</body>
+</html>
