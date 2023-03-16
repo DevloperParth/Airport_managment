@@ -1,0 +1,49 @@
+<h1>Bookings</h1>
+
+<!DOCTYPE html>
+<html>
+<body>
+ <%= stylesheet_link_tag "styles4.css"%>
+ 
+
+<table style="width:100%">
+  <% if current_user.role=="admin"%>
+  <tr>
+    <th>Booking id</th>
+    <th>
+      Passenger Name 
+    </th>
+    <th>Flight No</th>
+    <th>Flight Name</th>
+    <th>Source</th>
+    <th>Destination</th>
+    <th>Takeoff_time</th>
+    <th>Landing_time</th>
+    <th>Price</th>
+    <th>Check_in</th>
+  </tr>
+  
+      <% @bookings.each do |booking| %>
+      <tr>
+          <td><%= booking.id%></td> 
+          <td><% if current_user.role=="admin"%>
+              <%= User.find(booking.user_id).name %>
+              <% end %>
+          </td>
+          <td><%= Flight.find(booking.flight_id).flight_no %></td>
+          <td><%= Flight.find(booking.flight_id).flight_name %></td>
+          <td><%= Flight.find(booking.flight_id).source %></td>
+          <td><%= Flight.find(booking.flight_id).destination %></td>
+          <td><%= Flight.find(booking.flight_id).takeoff_time %></td>
+          <td><%= Flight.find(booking.flight_id).landing_time%> </td>
+          <td><%= Flight.find(booking.flight_id).price %></td>
+          
+          <td><%= link_to "Check-in" , bookings_check_in_action_path(:booking_id => booking.id) %></td>
+    </tr>
+       
+      <% end %> 
+   <% end %>
+</table>
+</body>
+</html>
+
