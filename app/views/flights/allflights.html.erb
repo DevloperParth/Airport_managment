@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html>
-<style>
-table, th, td {
-  border:1px solid black;
-  border-collapse:collapse;
-}
-body {background-color: #ffcc99;}
-</style>
 <body>
-
+<%= stylesheet_link_tag "styles4.css"%>
 <h2>All Flights</h2>
 
 <table style="width:100%">
@@ -21,29 +14,31 @@ body {background-color: #ffcc99;}
     <th>Takeoff_time</th>
     <th>Landing_time</th>
     <th>Price</th>
-    <th>Total_Seats</th>
-    <th>Available_Seats</th>
-    <th>Occupies_Seats</th>
+    <% if current_user.role=="passenger"%>
+      <th>Book Here </th>
+    <% end %></td>
   </tr>
   
-      <% @flights.each do |flight| %>
-      <tr>
-          <td><%= flight.id %></td>
-          <td><%= flight.flight_no %></td>
-          <td><%= flight.flight_name %></td>
-          <td><%= flight.source %></td>
-          <td><%= flight.destination %></td>
-          <td><%= flight.takeoff_time %></td>
-          <td><%= flight.landing_time%> </td>
-        
-          <td><%= flight.price %></td>
-          <td><%= flight.total_seats %></td>
-          <td><%= flight.available_seats %></td>
-          <td><%= flight.occupied_seats %></td>
-          </tr>
-      <% end %> 
+  <% @flights.each do |flight| %>
+    <tr>
+      <td><%= flight.id %></td>
+      <td><%= flight.flight_no %></td>
+      <td><%= flight.flight_name %></td>
+      <td><%= flight.source %></td>
+      <td><%= flight.destination %></td>
+      <td><%= flight.takeoff_time %></td>
+      <td><%= flight.landing_time%> </td>
+      <td><%= flight.price %></td>
+      <td><% if current_user.role=="passenger"%>
+         <%= button_to 'Book', bookings_path(user_id: current_user.id,flight_id: flight.id), method: :post%>
+         <% end %></td>
+    </tr>
+       
+  <% end %> 
 
 </table>
-<h3><li> <a href="/flightroutes/new">Schedule new flight</a></li></h3>
+           <% if current_user.role=="admin"%>
+             <%= link_to "Schedule new flight", new_flight_path%>
+           <% end %></td>
 </body>
 </html>

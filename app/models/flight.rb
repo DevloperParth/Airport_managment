@@ -10,4 +10,7 @@ class Flight < ApplicationRecord
   validates :available_seats, presence: true
   validates :occupied_seats, presence: true
   has_one :route
+
+  has_many :bookings
+  has_many :users, :through => :bookings
 end

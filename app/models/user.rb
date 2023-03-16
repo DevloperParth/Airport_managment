@@ -7,4 +7,7 @@ class User < ApplicationRecord
 
   enum :role , {passenger:'passenger', admin:'admin'}, prefix: true 
   #enum role: [:passenger, :admin]
+
+  has_many :bookings
+  has_many :flights , :through => :bookings
 end
