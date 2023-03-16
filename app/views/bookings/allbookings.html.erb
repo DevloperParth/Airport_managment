@@ -1,0 +1,21 @@
+<h1>Bookings</h1>
+
+<!DOCTYPE html>
+<html>
+<body>
+ <%= stylesheet_link_tag "styles4.css"%>
+ <!--Search form-->
+          <div class="d-flex input-group w-auto">
+          <%= form_tag("/bookings/check_booking/action", :method=>"get") do %>
+          <div class="input-group">
+            <%= search_field_tag :search, params[:email], placeholder: "Search bookings id", class: "form-control" %>
+            <div class="input-group-btn"  >
+            <%= button_tag "search for Circle", :class =>'btn btn-info glyphicon glyphicon-search',:name =>nil%>
+          </div>
+          <%end%>
+          </div>
+          <!--Search form-->
+
+
+</body>
+</html>

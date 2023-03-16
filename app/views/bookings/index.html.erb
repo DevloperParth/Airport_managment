@@ -1,0 +1,51 @@
+<h1>Bookings</h1>
+
+<!DOCTYPE html>
+<html>
+<body>
+ <%= stylesheet_link_tag "styles4.css"%>
+<table style="width:100%">
+  <tr>
+    <th>Booking id</th>
+    <th><% if current_user.role=="admin"%>
+      Passenger Name 
+    <% end %>
+    </th>
+    <th>Flight No</th>
+    <th>Flight Name</th>
+    <th>Source</th>
+    <th>Destination</th>
+    <th>Takeoff_time</th>
+    <th>Landing_time</th>
+    <th>Price</th>
+    <% if current_user.role=="passenger"%>
+      <th>Cancel Here </th>
+    <% end %></td>
+    
+  </tr>
+  
+      <% @bookings.each do |booking| %>
+      <tr>
+          <td><%= booking.id%></td> 
+          <td><% if current_user.role=="admin"%>
+              <%= User.find(booking.user_id).name %>
+              <% end %>
+          </td>
+          <td><%= Flight.find(booking.flight_id).flight_no %></td>
+          <td><%= Flight.find(booking.flight_id).flight_name %></td>
+          <td><%= Flight.find(booking.flight_id).source %></td>
+          <td><%= Flight.find(booking.flight_id).destination %></td>
+          <td><%= Flight.find(booking.flight_id).takeoff_time %></td>
+          <td><%= Flight.find(booking.flight_id).landing_time%> </td>
+          <td><%= Flight.find(booking.flight_id).price %></td>
+          <td><% if current_user.role=="passenger"%>
+              <%= link_to 'Cancel',bookings_booking_destroy_action_path(id: booking.id) %>
+              <% end %>
+          </td>
+      </tr>
+       
+      <% end %> 
+
+</table>
+</body>
+</html>
