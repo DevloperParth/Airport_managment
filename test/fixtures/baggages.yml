@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  weight: MyString
+  status: MyString
+  tag_number: 1
+
+two:
+  weight: MyString
+  status: MyString
+  tag_number: 1

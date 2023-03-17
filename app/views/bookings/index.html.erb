@@ -21,6 +21,9 @@
     <% if current_user.role=="passenger"%>
       <th>Cancel Here </th>
     <% end %></td>
+    <% if current_user.role=="passenger"%>
+      <th> Baggage </th>
+    <% end %></td>
     
   </tr>
   
@@ -42,6 +45,11 @@
               <%= link_to 'Cancel',bookings_booking_destroy_action_path(id: booking.id) %>
               <% end %>
           </td>
+          <td><% if current_user.role=="passenger"%>
+              <%= link_to 'Baggage', new_booking_baggage_path(booking_id: booking.id)%>
+              <% end %>
+          </td>
+          
       </tr>
        
       <% end %> 

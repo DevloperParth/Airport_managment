@@ -1,0 +1,28 @@
+<style>
+form {
+  text-align: center;
+}
+body{
+    background-repeat: no-repeat;
+   background-image: url('https://www.ethiopianairlines.com/images/default-source/default-album/1920x600pix-web-banner-baggage-imc-0320f3ccae2a-b5da-4333-bdb9-54136d50445f.jpg?sfvrsn=d60fd570_23')
+}
+</style>
+<body>
+<%= form_with model: @baggage, url: booking_baggages_path(@booking) do |f| %>
+  <div class="form-group">
+     <%= f.hidden_field :booking_id, value: @booking.id %>
+  </div>
+
+   <div class="form-group">
+    <%= f.label :weight %>
+    <%= f.text_field :weight %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :status %>
+    <%= f.select :status, Baggage.statuses %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
+</body>

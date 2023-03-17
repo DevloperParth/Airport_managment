@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'baggages/new'
+  get 'baggages/create'
   get 'bookings/booktour'
   get 'passengers/index'
   resources :passengers
@@ -17,11 +19,16 @@ Rails.application.routes.draw do
 
   get 'bookings/index' , to: "bookings#index"
   get 'bookings/allbookings' , to: "bookings#allbookings"
-  resources :bookings 
+  resources :bookings do
+    resources :baggages
+  end
 
+  resources :baggages
   get '/bookings/booking_destroy/action' ,to: "bookings#booking_destroy"
   
   post 'flights/check_in' ,to: "flights#check_in"
   get 'bookings/check_booking/action' ,to: "bookings#check_booking"
   get 'bookings/check_in/action' ,to: "bookings#check_in"
+
+  post	'/bookings/create',	to: "bookings#create"
 end

@@ -8,11 +8,10 @@ class BookingsController < ApplicationController
     @bookings = Booking.all
   end
   def create
-    @booking=Booking.new
-    @booking["user_id"]=params[:user_id].to_i
-    @booking["flight_id"]=params[:flight_id].to_i
+    @booking=Booking.create(user_id: params[:user_id], flight_id: params[:flight_id])
     if @booking.save
-      redirect_to  
+      
+    redirect_to @booking
     end
   end
 
@@ -37,3 +36,4 @@ class BookingsController < ApplicationController
     @booking=Booking.find_by(id:params[:booking_id]).present?
   end
 end
+
