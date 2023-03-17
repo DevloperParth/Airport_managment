@@ -21,9 +21,11 @@ Rails.application.routes.draw do
   get 'bookings/allbookings', to: 'bookings#allbookings'
   resources :bookings do
     resources :baggages
+    resources :baggage_claims
   end
 
   resources :baggages
+  resources :baggage_claims
   get '/bookings/booking_destroy/action', to: 'bookings#booking_destroy'
 
   post 'flights/check_in', to: 'flights#check_in'

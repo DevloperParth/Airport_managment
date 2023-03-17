@@ -1,0 +1,28 @@
+<h1>Baggages</h1>
+
+<!DOCTYPE html>
+<html>
+<body>
+ <%= stylesheet_link_tag "styles4.css"%>
+<table style="width:100%">
+  <tr>
+  <% if current_user.role=="passenger"%>
+      <th> Baggage Claim id </th>
+      <th> description </th>
+      <th> status </th>
+    <% end %>
+  </tr>
+  
+      <% @baggage_claim.each do |baggage_claim| %>
+        <tr>
+         <% if current_user.role=="passenger"%>
+          <td><%= baggage_claim.id %></td>
+          <td><%= baggage_claim.description %></td>
+          <td><%= baggage_claim.status %></td>
+           <% end %>
+        </tr>
+      <% end %> 
+
+</table>
+</body>
+</html>

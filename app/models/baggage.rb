@@ -1,6 +1,6 @@
 class Baggage < ApplicationRecord
   belongs_to :booking
-  # enum status: [:checked, :onboard, :lost]
+  has_one :baggage_claim, through: :booking
   enum :status, { checked: 'checked', onboard: 'onboard', lost: 'lost' }
   validates :weight, presence: true
   validates :status, presence: true

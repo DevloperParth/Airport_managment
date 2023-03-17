@@ -13,6 +13,10 @@ class BaggagesController < ApplicationController
     @baggage
   end
 
+  def index
+     @baggage = Baggage.all
+  end
+
   private
 
   def baggage_params

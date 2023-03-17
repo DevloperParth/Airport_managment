@@ -2,6 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :flight
   belongs_to :user
   has_many :baggages, dependent: :destroy
+  has_many :baggage_claims , dependent: :destroy
 
   after_create :send_booking_confirmation
   after_destroy :send_booking_cancellation

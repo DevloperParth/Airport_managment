@@ -24,10 +24,13 @@
     <% if current_user.role=="passenger"%>
       <th> Baggage </th>
     <% end %></td>
+    <% if current_user.role=="passenger"%>
+      <th> Baggage Claim </th>
+    <% end %></td>
     
   </tr>
   
-      <% @bookings.each do |booking| %>
+      <% current_user.bookings.each do |booking| %>
       <tr>
           <td><%= booking.id%></td> 
           <td><% if current_user.role=="admin"%>
@@ -47,6 +50,10 @@
           </td>
           <td><% if current_user.role=="passenger"%>
               <%= link_to 'Baggage', new_booking_baggage_path(booking_id: booking.id)%>
+              <% end %>
+          </td>
+           <td><% if current_user.role=="passenger"%>
+              <%= link_to 'Baggage Claim', new_booking_baggage_claim_path(booking_id: booking.id)%>
               <% end %>
           </td>
           
