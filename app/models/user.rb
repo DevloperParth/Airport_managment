@@ -5,9 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable
 
-  enum :role , {passenger:'passenger', admin:'admin'}, prefix: true 
-  #enum role: [:passenger, :admin]
+  enum :role, { passenger: 'passenger', admin: 'admin' }, prefix: true
+  # enum role: [:passenger, :admin]
 
   has_many :bookings
-  has_many :flights , :through => :bookings
+  has_many :flights, through: :bookings
 end
